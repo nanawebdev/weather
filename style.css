@@ -1,0 +1,100 @@
+header {
+    display: flex;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Alice, OpenSans;
+    background-color:rgb(41 41 39 / 50%);
+    text-align: center;
+    padding:5px;
+    justify-content: space-around;
+}
+
+.light-theme {
+    color: white;
+    font-family: Alice, OpenSans;
+    background-image:url(source/Nebo3.png);
+    background-attachment: fixed;
+}
+.dark-theme {
+    color: white;
+    background: #050325;
+}
+
+.theme-button  {
+    
+    text-decoration: none;
+    outline: none;
+    display: block;
+    color: white;
+    padding: 20px 30px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+    background-size: 200% auto;
+    box-shadow: 0 0 20px rgba(0,0,0,.1);
+    transition: .5s;
+  }
+ update-button:hover {background-position: right center;}
+
+.update-button {
+    
+    text-decoration: none;
+    outline: none;
+    display: block;
+    color: white;
+    padding: 20px 30px;
+    margin: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+    background-size: 200% auto;
+    box-shadow: 0 0 20px rgba(0,0,0,.1);
+    transition: .5s;
+  }
+ update-button:hover {background-position: right center;}
+
+.weather-now {
+    font-size: 50px;
+}
+.city { 
+    display:flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    line-height: 40px;
+    flex-direction: row;
+    align-content: flex-end;
+    font-size: 25px;
+    flex-wrap: wrap;
+    
+}
+.weather-type-now {
+    align-self:center;
+    
+}
+.time {
+    margin-top: 15px;
+    justify-content: space-around;
+    display:flex;
+    align-items: center;
+    font-size: 30px;
+}
+.otherinfo {
+    width: 250px;
+}
+
+.day-info {
+    background-color:rgb(41 41 39 / 50%);
+    padding: 1px;
+    text-align: center;
+   
+}
+
+.footer {
+    font-size: 15px;
+   
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body class="page light-theme">
+  <div id="app">
+    <header>
+      <button class="theme-button">Сменить тему</button>
+      <h1>Москва</h1>
+      <button class="update-button" @click="updateData()">Обновить</button>
+    </header>
+
+    <div class="city">
+      <div class="weather-now">{{ currentTemp }}</div>
+      <div><img class="weather-type-now" :src="imageSrc"></div>
+      <div>Ощущается как {{ feelsLike }}</div>
+      <div class="other-info-now">
+        <div>{{ currentPressure }}мм рт ст</div>
+        <div>{{ windDirection }}, {{ windPower }} м\с</div>
+        <div>Влажность {{ humidity }}%</div>
+      </div>
+      <div>Прогноз получен: {{ currentTime }}</div>
+      
+      
+    </div>
+
+    
+
+    <div v-for="day in days">
+      <div class="day-info">
+        <h3>{{ day.date }}</h3>
+      </div>
+      <div class="time" v-for="item in day.hourItems">
+        <div>{{ item.time }}</div>
+        <div><img class="wheather-type-at-hour" :src="item.imageSrc"></div>
+        <div>{{ item.temp }}</div>
+        <div class="otherinfo">
+          <div>Облачность {{ item.clouds }}%</div>
+          <div>Давление {{ item.pressure }}мм</div>
+          <div>{{ item.windDirection}} {{ item.windPower }} м\с</div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <span class="footer">Copyright Anna Serova</span>
+    </footer>
+
+   
+
+  </div>
+
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
