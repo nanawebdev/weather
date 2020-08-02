@@ -14,6 +14,7 @@ header {
     font-family: Alice, OpenSans;
     background-image:url(source/Nebo3.png);
     background-attachment: fixed;
+    background-size: cover;
 }
 .dark-theme {
     color: white;
