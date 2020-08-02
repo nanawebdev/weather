@@ -1621,9 +1621,9 @@ var app = new Vue({
   },
   methods: {
     updateData() {
-      // fetch(url)
-      //   .then(response => response.json())
-      //   .then(data => this.api = data);
+      fetch(url)
+        .then(response => response.json())
+        .then(data => this.api = data);
     }
   }
 })
