@@ -2,6 +2,7 @@
 <html lang="ru">
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="style.css" rel="stylesheet">
 </head>
 
@@ -14,18 +15,15 @@
     </header>
 
     <div class="city">
+      <div class="temp-get">Прогноз получен: {{ currentTime }}</div>
       <div class="weather-now">{{ currentTemp }}</div>
+      <div class="feels-like">Ощущается как {{ feelsLike }}</div>
       <div><img class="weather-type-now" :src="imageSrc"></div>
-      <div>Ощущается как {{ feelsLike }}</div>
       <div class="other-info-now">
-        <div>{{ currentPressure }}мм рт ст</div>
-        <div>{{ windDirection }}, {{ windPower }} м\с</div>
-        <div>Влажность {{ humidity }}%</div>
-      </div>
-      <div>Прогноз получен: {{ currentTime }}</div>
-      
-      
-    </div>
+        <div>Давление <br> {{ currentPressure }} мм рт ст </div>
+        <div> Ветер <br>{{ windDirection }}, {{ windPower }} м\с</div>
+        <div> Влажность<br>{{ humidity }}%</div>
+      </div></div>
 
     
 

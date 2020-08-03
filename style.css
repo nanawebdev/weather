@@ -14,7 +14,6 @@ header {
     font-family: Alice, OpenSans;
     background-image:url(source/Nebo3.png);
     background-attachment: fixed;
-    background-size: cover;
 }
 .dark-theme {
     color: white;
@@ -59,24 +58,44 @@ header {
   }
  update-button:hover {background-position: right center;}
 
-.weather-now {
-    font-size: 50px;
-}
+
 .city { 
     display:flex;
-    justify-content: space-around;
-    margin-top: 15px;
-    line-height: 40px;
-    flex-direction: row;
-    align-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(source/nebo1.jpg);
+    background-size: cover;
+}
+.feels-like {
     font-size: 25px;
-    flex-wrap: wrap;
-    
+    background-color:rgb(41 41 39 / 50%);
+    padding: 5px;
 }
+.weather-now {
+    font-size: 150px;
+}
+
+.temp-get {
+    font-size: 30px;
+}
+
 .weather-type-now {
-    align-self:center;
-    
+    padding-top:15px;
+    padding-bottom: 15px;
+
 }
+
+.other-info-now {
+    background-color:rgb(41 41 39 / 50%); 
+    display: flex;
+    padding-top:5px;
+    padding-bottom: 5px;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    font-size: 30px;
+}
+
 .time {
     margin-top: 15px;
     justify-content: space-around;
@@ -96,6 +115,5 @@ header {
 }
 
 .footer {
-    font-size: 15px;
-   
+    font-size: 20px;
 }
