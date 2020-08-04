@@ -34,7 +34,6 @@ header {
     letter-spacing: 2px;
     background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
     background-size: 200% auto;
-    box-shadow: 0 0 20px rgba(0,0,0,.1);
     transition: .5s;
     border-width: 0px;
     cursor: pointer;
@@ -94,9 +93,6 @@ header {
     align-items: center;
     font-size: 30px;
 }
-.otherinfo {
-    width: 250px;
-}
 
 .day-info {
     background-color:rgb(41 41 39 / 50%);
@@ -110,4 +106,21 @@ header {
 
 .dark-theme .city {
     background-image: url(source/darkSky.jpg);
+}
+
+@media (max-width: 768px) { /* Минимум 512 цветов */
+    .temp-get {
+        font-size: 20px;
+    }
+    .other-info-now {
+        font-size: 14px;
+    }
+    .theme-button, .update-button, select {
+        padding: 4px 6px;
+        font-size: 10px;
+        margin: 4px;
+    }
+    .time {
+        font-size: 16px;
+    }
 }
