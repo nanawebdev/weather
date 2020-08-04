@@ -15,15 +15,13 @@ header {
     background-image:url(source/Nebo3.png);
     background-attachment: fixed;
     background-size: cover;
-
 }
 .dark-theme {
     color: white;
     background: #050325;
 }
 
-.theme-button  {
-    
+.theme-button, .update-button, select  {
     text-decoration: none;
     outline: none;
     display: block;
@@ -38,44 +36,13 @@ header {
     background-size: 200% auto;
     box-shadow: 0 0 20px rgba(0,0,0,.1);
     transition: .5s;
-  }
- update-button:hover {background-position: right center;}
+    border-width: 0px;
+    cursor: pointer;
+}
 
-.update-button {
-    
-    text-decoration: none;
-    outline: none;
-    display: block;
-    color: white;
-    padding: 20px 30px;
-    margin: 10px 20px;
-    border-radius: 10px;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
-    background-size: 200% auto;
-    box-shadow: 0 0 20px rgba(0,0,0,.1);
-    transition: .5s;
-  }
- update-button:hover {background-position: right center;}
-
- select {
-    text-decoration: none;
-    outline: none;
-    display: block;
-    color: white;
-    padding: 20px 30px;
-    margin: 10px 20px;
-    border-radius: 10px;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
-    background-size: 200% auto;
-    box-shadow: 0 0 20px rgba(0,0,0,.1);
-    transition: .5s;
- }
+.update-button:hover, .theme-button:hover, select:hover {
+    background-position: right center;
+}
 
  option {
    color: black;
@@ -107,7 +74,6 @@ header {
 .weather-type-now {
     padding-top:15px;
     padding-bottom: 15px;
-
 }
 
 .other-info-now {
@@ -136,13 +102,11 @@ header {
     background-color:rgb(41 41 39 / 50%);
     padding: 1px;
     text-align: center;
-   
 }
 
 .footer {
     font-size: 20px;
 }
-
 
 .dark-theme .city {
     background-image: url(source/darkSky.jpg);

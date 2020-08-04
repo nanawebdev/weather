@@ -9,14 +9,12 @@
   <div id="app">
     <header>
       <button class="theme-button">Сменить тему</button>
-      <select name="city">
-        <option value="Moscow">Москва</option>
-        <option value="Kazan">Казань</option>
-        <option value="Samara">Самара</option>
-        <option value="Erzovka">Ерзовка</option>
-        <option value="Tambov">Тамбов</option>
+      <select name="city" v-model="currentCity">
+        <option v-for="(city, index) in availableCities" :value="index">
+          {{ city.name }}
+        </option>
       </select>
-      <button class="update-button" @click="updateData()">Обновить</button>
+      <button class="update-button" @click="updateCurrentCity()">Обновить</button>
     </header>
 
    
@@ -53,8 +51,6 @@
     <footer>
       <span class="footer">Copyright Anna Serova</span>
     </footer>
-
-   
 
   </div>
 
