@@ -1659,6 +1659,21 @@ var app = new Vue({
             })
 
             return days;
+        },
+        daily() {
+            return this.api.daily.map(v => {
+                var date = new Date(1000 * v.dt);
+                var weekDay = dayToString(date.getDay());
+                var weekDate = date.getDate() + ' ' + monthToString(date.getMonth());
+                var imageSrc = getWeatherImage(11, v.weather[0].id);
+                return {
+                    weekDay: weekDay,
+                    date: weekDate,
+                    dayTemp: tempToString(v.temp.day),
+                    nightTemp: tempToString(v.temp.night),
+                    imageSrc: imageSrc,
+                }
+            })
         }
     },
     created: function() {
@@ -1697,10 +1712,3 @@ themeButton.onclick = function () {
     page.classList.toggle('light-theme');
     page.classList.toggle('dark-theme');
 };
-
-
-
-
-
-
-
