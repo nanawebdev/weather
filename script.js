@@ -1677,7 +1677,7 @@ var app = new Vue({
         }
     },
     created: function() {
-        this.updateCurrentCity();
+        // this.updateCurrentCity();
     },
     methods: {
         updateCurrentCity() {
@@ -1712,3 +1712,25 @@ themeButton.onclick = function () {
     page.classList.toggle('light-theme');
     page.classList.toggle('dark-theme');
 };
+
+// КНОПКА НАВЕРХ
+let upButton = document.querySelector ('.up-button')
+
+window.onscroll = function() {
+    let threshold = 1000;
+
+    if (window.innerWidth < 768) {
+        threshold = 500;
+    }
+
+    if (window.pageYOffset > threshold) {
+        upButton.classList.add('shown')
+    } else {
+        upButton.classList.remove('shown')
+    }
+}
+
+upButton.onclick = function () {
+    window.scroll(0,0)
+}
+

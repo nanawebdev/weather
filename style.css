@@ -19,6 +19,7 @@ header {
 .dark-theme {
     color: white;
     background: #050325;
+    font-family: Alice, OpenSans;
 }
 
 .theme-button, .update-button, select  {
@@ -133,19 +134,22 @@ header {
 }
 
 footer {
-    border-top-color: white;
-    border-top-style:solid;
-    border-top-width: 2px;
-    font-size: 20px;
+    background-color: rgba (1,1,1,0.5);
+    padding: 20px 0 10px 0;
     text-align: center;
-    padding-top: 5px;
+    margin-top: 15px;
+}
+
+.dark-theme footer {
+    background-color:#111111;
+    color: white;
 }
 
 .dark-theme .city {
     background-image: url(source/darkSky.jpg);
 }
 
-@media (max-width: 768px) { /* Минимум 512 цветов */
+@media (max-width: 768px) {
     .temp-get {
         font-size: 20px;
     }
@@ -164,4 +168,40 @@ footer {
         overflow: scroll;
         justify-content: flex-start;
     }
+}
+
+
+/* КНОПКА НАВЕРХ */
+
+/* плавная прокрутка */
+html {
+    scroll-behavior: smooth;
+}
+
+.up-button {
+    position:fixed;
+    bottom: 100px;
+    right: 10px;
+    z-index: 1;
+    width: 80px;
+    height: 75px;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    background-color: rgba(1,1,1,0.5);
+    color: white;
+    font-size: 20px; 
+    opacity: 0;
+    transition: opacity .5s;
+    cursor: pointer;
+} 
+
+.shown {
+    opacity:1;
+}
+
+.dark-theme .up-button {
+    background-color: #eff6ff94;
+    color: #111111;
+    font-weight: 600;
 }
