@@ -1580,9 +1580,9 @@ var app = new Vue({
             CITIES.PETROZAVODSK,
             CITIES.KRASNAYAPOLYANA,
             CITIES.ESTOSADOK,
-            CITIES.CHERNAYAPIRAMIDA,
+            CITIES.CHERNAYAPIRAMIDA
 
-         =   
+        
         ]
     },
     watch: {
