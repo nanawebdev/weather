@@ -146,7 +146,7 @@ var CITIES = {
     PETROZAVODSK: {lat:61.796110, lon: 34.349170, name: 'Петрозаводск'},
     KRASNAYAPOLYANA: {lat: 43.564655, lon: 40.106477, name:'Красная поляна'},
     ESTOSADOK: {lat:34.34917, lon:40.258395, name:'Эсто-садок'},
-    CHERNAYAPIRAMIDA: {lat:43.646859, lon:40.265953, name:'Черная пирамида'}
+    CHERNAYAPIRAMIDA: {lat:43.646859, lon:40.265953, name: 'Черная пирамида'}
 
 }
 
