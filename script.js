@@ -141,6 +141,13 @@ var CITIES = {
     SAMARA: { lat: 53.198627, lon: 50.113987, name: 'Самара' },
     ERZOVKA: { lat: 53.4985667, lon: 51.6599312, name: 'Ерзовка' },
     TAMBOV: { lat: 52.72879, lon: 41.45536, name: 'Тамбов' },
+    ADLER: {lat: 43.452136, lon: 39.914160, name: 'Адлер'},
+    SOCHI: {lat: 43.713341, lon: 39.580032, name: 'Сочи'},
+    PETROZAVODSK: {lat:61.796110, lon: 34.349170, name: 'Петрозаводск'},
+    KRASNAYAPOLYANA: {lat: 43.564655, lon: 40.106477, name:'Красная поляна'},
+    ESTOSADOK: {lat:34.34917, lon:40.258395, name:'Эсто-садок'},
+    CHERNAYAPIRAMIDA: {lat:43.646859, lon:40.265953, name:'Черная пирамида'}
+
 }
 
 var url = new URL(API_HOST + '/onecall');
@@ -1567,7 +1574,15 @@ var app = new Vue({
             CITIES.KAZAN,
             CITIES.SAMARA,
             CITIES.ERZOVKA,
-            CITIES.TAMBOV
+            CITIES.TAMBOV,
+            CITIES.ADLER,
+            CITIES.SOCHI,
+            CITIES.PETROZAVODSK,
+            CITIES.KRASNAYAPOLYANA,
+            CITIES.ESTOSADOK,
+            CITIES.CHERNAYAPIRAMIDA,
+
+         =   
         ]
     },
     watch: {
@@ -1677,7 +1692,7 @@ var app = new Vue({
         }
     },
     created: function() {
-        this.updateCurrentCity();
+        // this.updateCurrentCity();
     },
     methods: {
         updateCurrentCity() {
