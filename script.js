@@ -1692,7 +1692,7 @@ var app = new Vue({
         }
     },
     created: function() {
-        // this.updateCurrentCity();
+        this.updateCurrentCity();
     },
     methods: {
         updateCurrentCity() {
