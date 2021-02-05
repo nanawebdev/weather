@@ -1543,7 +1543,8 @@ function tempToString(temp) {
         return '+' + cTemp;
     }
     if (cTemp < 0) {
-        return '-' + cTemp;
+        // return '-' + cTemp;
+        return cTemp;
     }
     return cTemp;
 }
@@ -1692,7 +1693,7 @@ var app = new Vue({
         }
     },
     created: function() {
-        this.updateCurrentCity();
+        // this.updateCurrentCity();
     },
     methods: {
         updateCurrentCity() {
@@ -1720,13 +1721,20 @@ var app = new Vue({
 })
 
 
-let page = document.querySelector('.page');
+let page = document.querySelector('.page')
+let themeButtonSun = document.querySelector('.sun') 
+let themeButtonMoon = document.querySelector('.moon') 
 
-let themeButton = document.querySelector('.theme-button');
+
+let themeButton = document.querySelector('.theme-button')
 themeButton.onclick = function () {
-    page.classList.toggle('light-theme');
-    page.classList.toggle('dark-theme');
-};
+    page.classList.toggle('light-theme')
+    page.classList.toggle('dark-theme')
+    themeButtonSun.classList.toggle('hidden')
+    themeButtonMoon.classList.toggle('hidden') 
+}
+
+
 
 // КНОПКА НАВЕРХ
 let upButton = document.querySelector ('.up-button')
