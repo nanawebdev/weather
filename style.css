@@ -1,207 +1,176 @@
-header {
-    display: flex;
-    font-size: 20px;
-    font-weight: 600;
-    font-family: Alice, OpenSans;
-    background-color:rgb(41 41 39 / 50%);
-    text-align: center;
-    padding:5px;
-    justify-content: space-around;
+body {
+  width: 930px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-.light-theme {
-    color: white;
-    font-family: Alice, OpenSans;
-    background-image:url(source/Nebo3.png);
-    background-attachment: fixed;
-    background-size: cover;
+.section-title {
+  letter-spacing: 2px;
+  text-align: center;
+  font-size: 14px;
+  display: block;
+  color: var(--dark-text-color);
+  padding: 4px 0;
+  text-transform: uppercase;
+  background-color: var(--default-light-color);
+  opacity: 0.9;
+  border-radius: 4px;
 }
-.dark-theme {
-    color: white;
-    background: #050325;
-    font-family: Alice, OpenSans;
-}
-
-.theme-button, .update-button, select  {
-    text-decoration: none;
-    outline: none;
-    display: block;
-    color: white;
-    padding: 20px 30px;
-    margin: 10px 20px;
-    border-radius: 10px;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
-    background-size: 200% auto;
-    transition: .5s;
-    border-width: 0px;
-    cursor: pointer;
-}
-
-.update-button:hover, .theme-button:hover, select:hover {
-    background-position: right center;
-}
-
-.daily-title {
-    letter-spacing: 2px;
-    text-align: center;
-    font-size: 25px;
-    outline: none;
-    display: block;
-    color: white;
-     padding: 5px;
-    font-family: Alice, OpenSans;
-    text-transform: uppercase;
-    background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
-    background-size: 200% auto;
-    transition: .5s;
-    
-   
-}
-
- option {
-   color: black;
- }
-
-.city { 
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    background-image: url(source/nebo1.jpg);
-    background-size: cover;
-}
-
-
-.weather-week-days {
-    display:flex;
-    justify-content: space-around;
-    max-width: 950px;
-}
-.weather-week-day-next {
-    padding: 10px;
-    margin: 10px;
-    background-color: rgba(0,0,0,0.1);
-    border-radius: 6px;
-    white-space: nowrap;
-    transition: background-color .5s;
-}
-.weather-week-day-next:hover {
-    background-color: rgba(0,0,0,0.2);
-}
-.feels-like {
-    font-size: 25px;
-    background-color:rgb(41 41 39 / 50%);
-    padding: 5px;
+/* СЕЙЧАС ДЛЯ ГОРОДА  */
+.city {
+  font-size:20px;
+  color: var(--light-text-color);
+  margin: 12px 0;
+  background-color: var(--active-el);
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
 }
 .weather-now {
-    font-size: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
 }
-
-.temp-get {
-    font-size: 30px;
+.weather-from {
+  display: flex;
+  flex-direction: column;
+  margin:0;
+  justify-content: center;
 }
-
-.weather-type-now {
-    padding-top:15px;
-    padding-bottom: 15px;
+.feels-like {
+  font-size: 16px;
 }
-
-.other-info-now {
-    background-color:rgb(41 41 39 / 50%); 
-    display: flex;
-    padding-top:5px;
-    padding-bottom: 5px;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
-    font-size: 30px;
+/* ПОГОДА НА НЕДЕЛЮ  */
+.weather-week-days {
+  overflow-x: scroll;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  column-gap: 8px;
 }
-
-.time {
-    margin-top: 15px;
-    justify-content: space-around;
-    display:flex;
-    align-items: center;
-    font-size: 30px;
+.weather-week-day-next {
+  color: var(--default-dark-color);
+  padding: 10px;
+  background-color: var(--modal-bg);
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: background-color 0.5s;
 }
-
-.day-info {
-    background-color:rgb(41 41 39 / 50%);
-    padding: 1px;
-    text-align: center;
+.weather-week-day-next:hover {
+  background-color: var(--default-light-color);
 }
-
+.weather-week-day-next:active {
+  background-color: var(--default-dark-color);
+  color: var(--default-light-color);
+}
+/* ПОДВАЛ  */
 footer {
-    background-color: rgba (1,1,1,0.5);
-    padding: 20px 0 10px 0;
-    text-align: center;
-    margin-top: 15px;
+  background-color: rgba (1, 1, 1, 0.5);
+  padding: 20px 0 10px 0;
+  text-align: center;
+  margin-top: 15px;
 }
-
-.dark-theme footer {
-    background-color:#111111;
-    color: white;
-}
-
-.dark-theme .city {
-    background-image: url(source/darkSky.jpg);
-}
-
 @media (max-width: 768px) {
-    .temp-get {
-        font-size: 20px;
-    }
-    .other-info-now {
-        font-size: 14px;
-    }
-    .theme-button, .update-button, select {
-        padding: 8px 12px;
-        font-size: 10px;
-        margin: 4px;
-    }
-    .time {
-        font-size: 16px;
-    }
-    .weather-week-days {
-        overflow: scroll;
-        justify-content: flex-start;
-    }
+  .temp-get {
+    font-size: 16px;
+  }
+  .other-info-now {
+    font-size: 16px;
+  }
+  .time {
+    font-size: 16px;
+  }
+  .weather-week-days {
+    overflow: scroll;
+    justify-content: flex-start;
+  }
+}
+@media screen and (max-device-width: 640px), screen and (max-width: 640px) {
+  body {
+    width: 100%;
+  }
+}
+/* ПОЧАСОВОЙ ПРОГНОЗ  */
+.hour-info {
+justify-self: center;
+ display: grid;
+ row-gap: 8px;
+ grid-template-rows: min-content 1fr min-content min-content min-content min-content min-content min-content 1fr;
+}
+.daily-weather-wrapper {
+  display: flex;
+  overflow-x: scroll;
+}
+.iten-text{
+  padding:0 8px;
+  font-size: 16px;
+  font-weight:500;
+}
+.item-title {
+  background-color: var(--modal-bg);
+  font-size:14px;
+  display: block;
+  padding:0 8px;
+}
+.hour-title {
+  color: var(--active-el);
+}
+.temp-item {
+  /* text-align: center; */
+  font-size:30px;
+  /* margin: 8px 0; */
+}
+.info-wrapper {
+  display: flex;
+  overflow: scroll;
+}
+.titles-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: var(--default-light-color);
+}
+.day-title {
+  margin: 0;
+  height:30px;
+  border: none;
+  font-size:16px;
+  text-align:center;
+}
+.pagination {
+  margin:8px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.btn {
+  background-color: var(--modal-bg);
+  border: none;
+  outline: none;
+  padding:8px 0;
+  text-transform: uppercase;
+  font-size:14px;
+  font-weight:500;
+  color:var(--dark-text-color);
 }
 
-
-/* КНОПКА НАВЕРХ */
-
-/* плавная прокрутка */
-html {
-    scroll-behavior: smooth;
+.btn:hover {
+  background-color: var(--default-light-color);
 }
 
-.up-button {
-    position:fixed;
-    bottom: 100px;
-    right: 10px;
-    z-index: 1;
-    width: 80px;
-    height: 75px;
-    border: none;
-    border-radius: 50%;
-    outline: none;
-    background-color: rgba(1,1,1,0.5);
-    color: white;
-    font-size: 20px; 
-    opacity: 0;
-    transition: opacity .5s;
-    cursor: pointer;
-} 
-
-.shown {
-    opacity:1;
+.btn.active:hover {
+  background-color: var(--active-el);
 }
 
-.dark-theme .up-button {
-    background-color: #eff6ff94;
-    color: #111111;
-    font-weight: 600;
+.active {
+  background-color: var(--active-el);
+  color: var(--light-text-color);
+}
+
+._hidden {
+  display: none;
 }

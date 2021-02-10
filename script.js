@@ -1498,7 +1498,6 @@ var apiData = {
     ]
 }
 
-
 // getWeatherData();
 
 function KtoC(temp) {
@@ -1563,9 +1562,6 @@ function monthToString(month) {
 9: 'октября',
 10: 'ноября',
 11: 'декабря',
-
-
-
     }
     return dict[month]
 }
@@ -1596,8 +1592,6 @@ var app = new Vue({
             CITIES.KRASNAYAPOLYANA,
             CITIES.ESTOSADOK,
             CITIES.CHERNAYAPIRAMIDA
-
-        
         ]
     },
     watch: {
@@ -1612,6 +1606,9 @@ var app = new Vue({
         }
     },
     computed: {
+        currentCityName () {
+            return this.availableCities[this.currentCity]
+        },
         currentTemp() {
             return tempToString(this.api.current.temp);
         },
@@ -1687,7 +1684,6 @@ var app = new Vue({
                     day.hourItems.push(hour)
                 }
             })
-
             return days;
         },
         daily() {
@@ -1710,6 +1706,11 @@ var app = new Vue({
         // this.updateCurrentCity();
     },
     methods: {
+        onCitySelect(cityIndex) {
+            this.currentCity = cityIndex;
+            document.querySelector('.modal-wrapper').style.display = 'none'
+            document.querySelector('.modal-overlay').style.display = 'none'
+        },
         updateCurrentCity() {
             this.updateData({
                 lat: this.availableCities[this.currentCity].lat,
@@ -1735,39 +1736,85 @@ var app = new Vue({
 })
 
 
-let page = document.querySelector('.page')
-let themeButtonSun = document.querySelector('.sun') 
-let themeButtonMoon = document.querySelector('.moon') 
+const page = document.querySelector('.page')
+const openSelectCity = document.querySelector('.js-select-city')
+const changeDayBtns = document.querySelectorAll('.btn')
+const daysDetailedInfoEls = document.querySelectorAll('.days-detailed-info')
+const modalEl = document.querySelector('.modal-wrapper')
+const modalOverlayEl = document.querySelector('.modal-overlay')
+const selectWrapperEl = document.querySelector('.select-wrapper')
 
+daysDetailedInfoEls[0].classList.remove('_hidden')
 
-let themeButton = document.querySelector('.theme-button')
-themeButton.onclick = function () {
-    page.classList.toggle('light-theme')
-    page.classList.toggle('dark-theme')
-    themeButtonSun.classList.toggle('hidden')
-    themeButtonMoon.classList.toggle('hidden') 
-}
-
-
-
-// КНОПКА НАВЕРХ
-let upButton = document.querySelector ('.up-button')
-
-window.onscroll = function() {
-    let threshold = 1000;
-
-    if (window.innerWidth < 768) {
-        threshold = 500;
-    }
-
-    if (window.pageYOffset > threshold) {
-        upButton.classList.add('shown')
-    } else {
-        upButton.classList.remove('shown')
+for (let i = 0; i < 3; i++) {
+    changeDayBtns[i].onclick = function () {
+        const oldActiveButton = document.querySelector('.btn.active')
+        oldActiveButton.classList.remove('active')
+        changeDayBtns[i].classList.add('active')
+        const oldDetailedInfoEl = document.querySelector('.days-detailed-info:not(._hidden)')
+        daysDetailedInfoEls[i].classList.remove('_hidden')
+        oldDetailedInfoEl.classList.add('_hidden')
     }
 }
 
-upButton.onclick = function () {
-    window.scroll(0,0)
-}
+openSelectCity.addEventListener('click', function() {
+    modalEl.style.display = 'block'
+    modalOverlayEl.style.display = 'block'
+})
+
+modalOverlayEl.addEventListener('click', function() {
+    modalEl.style.display = 'none'
+    modalOverlayEl.style.display = 'none'
+})
+
+// document.body.addEventListener('click', function(ev) {
+//     let isClickInsideSelect = false;
+
+//     let currentParent = ev.target
+//     while (currentParent) {
+//         if (currentParent === selectWrapperEl) {
+//             isClickInsideSelect = true
+//         }
+//         currentParent = currentParent.parentElement
+//     }
+
+//     if (!isClickInsideSelect) {
+//         modalEl.style.display = 'none'
+//         modalOverlayEl.style.display = 'none'
+//     }
+// })
+
+// 1. по тапу на кнопку с другой кнопки убирается класс который добавляет стили (красный фон)
+// 2. на эту кнопку добавляется стиль
+// 3. сегодня === текущая дата завтра === тек дата +1 послезавтра тек дата +2
+// 4. отобразить данные === выбранной дате, т е тыкнутой кнопке
+
+// СМЕНА ТЕМЫ - не нужна.
+// let themeButton = document.querySelector('.theme-button')
+// themeButton.onclick = function () {
+//     page.classList.toggle('light-theme')
+//     page.classList.toggle('dark-theme')
+//     themeButtonSun.classList.toggle('hidden')
+//     themeButtonMoon.classList.toggle('hidden') 
+// }
+// КНОПКА НАВЕРХ - пока не нужна.
+// let upButton = document.querySelector ('.up-button')
+
+// window.onscroll = function() {
+//     let threshold = 1000;
+
+//     if (window.innerWidth < 768) {
+//         threshold = 500;
+//     }
+
+//     if (window.pageYOffset > threshold) {
+//         upButton.classList.add('shown')
+//     } else {
+//         upButton.classList.remove('shown')
+//     }
+// }
+
+// upButton.onclick = function () {
+//     window.scroll(0,0)
+// }
 

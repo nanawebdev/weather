@@ -4,82 +4,103 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="style.css" rel="stylesheet">
-  <link rel="apple-touch-icon" sizes="180x180" href="/weather/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/weather/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/weather/favicon-16x16.png">
-  <link rel="manifest" href="/weather/site.webmanifest">
-  <link rel="mask-icon" href="/weather/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="/weather/favicon.ico">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="/weather/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
+  <link href="header.css" rel="stylesheet">
+  <title>Weather</title>
 </head>
 
-<body class="page light-theme">
+<body class="page">
   <div id="app">
-    <header>
-      <button class="theme-button">Сменить тему</button>
-      <select name="city" v-model="currentCity">
-        <option v-for="(city, index) in availableCities" :value="index">
-          {{ city.name }}
-        </option>
-      </select>
-      <button class="update-button" @click="updateCurrentCity()">Обновить</button>
+    <header class="main-header">
+      <div class="select-wrapper">
+        <button class="open-select js-select-city">Выбор города</button>
+        <div class="modal-wrapper">
+          <div class="modal">
+            <div name="city">
+              <div v-for="(city, index) in availableCities" :value="index" class="select-option" @click="onCitySelect(index)">
+                {{ city.name }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-overlay"></div>
+      </div>
+      <!-- <button class="update-button" @click="updateCurrentCity()">Обновить</button> -->
     </header>
 
+    <main class="main-content">
+      <div class="city">
+        <p class="weather-from">
+          <img class="weather-type-now" :src="imageSrc" width="64" height="64">
+          <span class="current-city">
+            {{ currentCityName.name }}
+          </span>
+          <span class="temp-get"> {{ currentTime }}</span>
+        </p>
 
-    <div class="city">
-      <div class="temp-get">Прогноз получен: {{ currentTime }}</div>
-      <div class="weather-now">{{ currentTemp }}</div>
-      <div class="feels-like">Ощущается как {{ feelsLike }}</div>
-      <div><img class="weather-type-now" :src="imageSrc"></div>
-      <div class="other-info-now">
-        <div>Давление <br> {{ currentPressure }} мм рт ст </div>
-        <div> Ветер <br>{{ windDirection }}, {{ windPower }} м\с</div>
-        <div> Влажность<br>{{ humidity }}%</div>
-      </div>
-    </div>
-
-    <h1 class="daily-title">Прогноз на 7 дней</h1>
-    <div class="weather-week-days">
-
-      <div class="weather-week-day-next" v-for="day in daily">
-        <div>{{ day.weekDay }}</div>
-        <div>{{ day.date }}</div>
-        <div><img :src="day.imageSrc"></div>
-        <div>{{ day.dayTemp }} днем</div>
-        <div>{{ day.nightTemp }} ночью</div>
-      </div>
-    </div>
-    <h1 class="daily-title">Почасовой прогноз</h1>
-    <div v-for="day in days">
-      <div class="day-info">
-        <h3>{{ day.date }}</h3>
-      </div>
-      <div class="time" v-for="item in day.hourItems">
-        <div>{{ item.time }}</div>
-        <div><img class="wheather-type-at-hour" :src="item.imageSrc"></div>
-        <div>{{ item.temp }}</div>
-        <div class="otherinfo">
-          <div>Облачность {{ item.clouds }}%</div>
-          <div>Давление {{ item.pressure }}мм</div>
-          <div>{{ item.windDirection}} {{ item.windPower }} м\с</div>
+        <div class="weather-now">
+          <span class="weather-now">{{ currentTemp }}</span>
+          <span class="feels-like">Ощущается как {{ feelsLike }}</span>
         </div>
+        <!-- <div class="other-info-now">
+          <div class="info-item pressure-info">Давление <br> {{ currentPressure }} мм рт ст </div>
+          <div class="info-item wind-info"> Ветер <br>{{ windDirection }}, {{ windPower }} м\с</div>
+          <div class="info-item himidity-info"> Влажность<br>{{ humidity }}%</div>
+        </div> -->
       </div>
-    </div>
 
-<!-- КНОПКА НАВЕРХ -->
-    <button type="button" class="up-button">Наверх
-    </button>
+      <section class="week-weather">
+        <h2 class="section-title">Прогноз на 7 дней</h2>
+        <div class="weather-week-days">
+          <div class="weather-week-day-next" @click="onDayClick(day)" v-for="day in daily">
+            <div>{{ day.weekDay }}</div>
+            <div>{{ day.date }}</div>
+            <div>
+              <img :src="day.imageSrc" width="64" height="64">
+            </div>
+            <div>{{ day.dayTemp }} днем</div>
+            <div>{{ day.nightTemp }} ночью</div>
+          </div>
+        </div>
+      </section>
 
-    <footer>
-      &copy; Серова Анна, 2020
+      <section class="daily-weather">
+        <h2 class="section-title">Почасовой прогноз</h2>
+        <div class="pagination">
+          <button class="btn active">Сегодня</button class="btn">
+          <button class="btn">Завтра</button class="btn">
+          <button class="btn">Послезавтра</button class="btn">
+        </div>
+
+        <div v-for="day in days" class="days-detailed-info _hidden">
+          <div class="day-info">
+            <h3 class="day-title">{{ day.date }}</h3>
+          </div>
+          <div class="daily-weather-wrapper">
+            <div class="hour-info" v-for="item in day.hourItems">
+              <div class="hour-title">{{ item.time }}</div>
+              <img class="wheather-type-at-hour" :src="item.imageSrc" width="64" height="64">
+              <div class="temp-item">{{ item.temp }}</div>
+
+              <span class="item-title">Влажность</span>
+              <div class="iten-text">{{ item.clouds }}%</div>
+              <span class="item-title">Давление</span>
+              <div class="iten-text"> {{ item.pressure }}мм</div>
+              <span class="item-title">Ветер</span>
+              <div class="iten-text"> {{ item.windDirection}} <br> {{ item.windPower }} м\с</div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+    </main>
+
+    <footer class="main-footer">
+      &copy; Серова Анна, 2020 - 2021
     </footer>
 
   </div>
-
-
-
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="script.js"></script>
 </body>

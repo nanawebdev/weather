@@ -1,0 +1,108 @@
+:root {
+  --default-dark-color: #5a476d;
+  --default-light-color: #f2d09d;
+  --light-text-color: #ffff;
+  --dark-text-color: #000000;
+  --modal-bg: #cfcfe7;
+  --active-el:#e85d75;
+}
+* {
+  box-sizing: border-box;
+}
+.hidden {
+  opacity: 0;
+}
+.page {
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--light-dark-color);
+  padding: 0 8px;
+}
+/* ВЫБОР ГОРОДА  */
+.open-select {
+  display: flex;
+  align-items: center;
+  outline: none;
+  border: none;
+  background-color: var(--default-dark-color);
+  color: var(--light-text-color);
+  height: 42px;
+  border-radius: 4px;
+  width: 160px;
+  text-transform: uppercase;
+  position: relative;
+}
+.modal-wrapper {
+  position: absolute;
+  display: none;
+}
+.open-select::after {
+  border: 6px solid transparent; /* Прозрачные границы */
+  border-top: 6px solid var(--modal-bg); /* Добавляем треугольник */
+  position: absolute;
+  content: "";
+  right: 12px;
+  top: 20px; /* Положение треугольника */
+}
+.select-option {
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: background-color 0.3s;
+}
+.select-option:first-child,
+.select-option:last-child {
+    overflow: hidden;
+}
+.select-option:first-child {
+ border-top-left-radius: 4px;
+ border-top-right-radius: 4px;
+}
+.select-option:last-child {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.select-option:hover {
+  background-color: var(--default-light-color);
+}
+/* добавить Overlay  */
+.modal {
+  background-color: var(--modal-bg);
+  opacity: 0.8;
+  width: 200px;
+  border-radius: 4px;
+  margin-top: 12px;
+  position: relative;
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  text-transform: uppercase;
+  z-index:1;
+}
+.modal::after {
+  border: 9px solid transparent; /* Прозрачные границы */
+  border-bottom: 9px solid var(--modal-bg); /* Добавляем треугольник */
+  position: absolute;
+  content: "";
+  left: 12px;
+  top: -18px; /* Положение треугольника */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+  z-index: 10;
+  display: none;
+}
+.modal-wrapper {
+  z-index: 20;
+}
+.open-select {
+  position: relative;
+  z-index: 20;
+}
